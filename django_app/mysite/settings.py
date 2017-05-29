@@ -14,7 +14,12 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+# print('BASE_DIR : '+ BASE_DIR)
+# os.path.join을 사용해서 TEMPLATE_DIR 변수에 djang_app/templates 폴더의 경로를 할당
+TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
+# 해당 OS 형식에 맞도록 입력 받은 경로를 연결합니다. (입력 중간에 절대경로가 나오면 이전에
+# 취합된 경로는 제거하고 다시 연결합니다)
+# print(TEMPLATES_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -37,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +59,9 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            TEMPLATES_DIR,
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
